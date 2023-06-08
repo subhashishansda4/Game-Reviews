@@ -12,14 +12,14 @@ Automated techniques can be used to address these challenges and help developers
 ### Solution to the Problem
 There are many different solutions for managing consumer reviews. Some of the most common include:
 
-* Natural language processing (NLP) to automatically extract key information from reviews, such as sentiment analysis, aspect extraction, and categorization
-* Machine learning and AI to automate the process of reviewing and filtering consumer reviews
-* Sentiment analysis and opinion mining to determine the overall sentiment expressed in reviews
-* Review summarization to generate concise summaries of consumer reviews
-* Collaborative filtering and recommender systems to provide personalized recommendations based on consumer reviews
-* User-generated content moderation to filter out spam, offensive, or misleading reviews
-* User interface and visualization to develop user-friendly interfaces and visualization tools that allow users to navigate and explore consumer reviews effectively
-* Feedback management systems to track, organize, and respond to consumer reviews
+* **Natural language processing (NLP)** to automatically extract key information from reviews, such as sentiment analysis, aspect extraction, and categorization
+* **Machine learning and AI** to automate the process of reviewing and filtering consumer reviews
+* **Sentiment analysis and opinion mining** to determine the overall sentiment expressed in reviews
+* **Review summarization** to generate concise summaries of consumer reviews
+* **Collaborative filtering and recommender systems** to provide personalized recommendations based on consumer reviews
+* **User-generated content moderation** to filter out spam, offensive, or misleading reviews
+* **User interface and visualization** to develop user-friendly interfaces and visualization tools that allow users to navigate and explore consumer reviews effectively
+* **Feedback management systems** to track, organize, and respond to consumer reviews
 
 The best solution for a particular business or platform will depend on its specific context and requirements. However, by combining multiple approaches and continuously iterating based on feedback and data analysis, businesses can develop effective solutions for managing vast amounts of consumer reviews
 
@@ -33,11 +33,11 @@ It allows users to browse and purchase games, manage their game library, and com
 ![steam_ui](https://github.com/subhashishansda4/Game-Reviews/blob/main/misc/steam%20ui.jpg)
 
 Here are some of the features of the Steam UI:
-* A library of games: The Steam UI has a large library of games that users can browse and purchase
-* A store: The Steam UI has a store where users can purchase games, DLC, and other content
-* A community: The Steam UI has a built-in community where users can connect with other gamers, chat with friends, and join groups
-* A workshop: The Steam UI has a workshop where users can find and download mods, maps, and other user-created content for their games
-* A news section: The Steam UI has a news section where users can find news and updates about Steam and its games
+* **A library of games**: The Steam UI has a large library of games that users can browse and purchase
+* **A store**: The Steam UI has a store where users can purchase games, DLC, and other content
+* **A community**: The Steam UI has a built-in community where users can connect with other gamers, chat with friends, and join groups
+* **A workshop**: The Steam UI has a workshop where users can find and download mods, maps, and other user-created content for their games
+* **A news section**: The Steam UI has a news section where users can find news and updates about Steam and its games
 
 ### Steam Game ID
 The Steam game ID is a unique identifier for a game on Steam. It is used to identify the game in Steam APIs, such as the User Reviews API. To get user reviews for a game, you need to know the game's Steam ID
@@ -58,4 +58,124 @@ The Steamworks API is designed for developers who want to create games that inte
 
 ![steam_api_elements](https://github.com/subhashishansda4/Game-Reviews/blob/main/misc/steam%20api%20elements.jpg)
 
-## Workflow
+## Raw Data
+With the help of the Steam API took the data of recent consumer reviews of five different games. All of the computing is done on a sample size of 2000 however, the population was much larger (~2,00,000)
+
+## Initial EDa
+count of positive reviews\
+![positive](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/positive.jpg)
+
+count of positive reviews per game\
+![positive_per_game](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/positive_per_game.jpg)
+
+scatter plot (votes v/s score)\
+![votes_score](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/votes_vs_score.jpg)
+
+month-wise review count\
+![month](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/month.jpg)
+
+year-wise review count\
+![year](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/year.jpg)
+
+day-wise review count\
+![day](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/day.jpg)
+
+## Data Preprocessing
+Once the dataset is collected, it needs to be pre-processed to ensure its quality and suitability for analysis\
+\
+This involves several steps, including:
+* Text Cleaning: Removing any irrelevant characters, symbols, or special characters from the reviews. Also replacing numbers and symbols with its equivalent text counterpart
+* Stopwords Removal: Removing common words that do not carry significant meaning, such as "the," "is," "and," etc. Words like generic names, full forms of abbreviations and also contractions
+* Tokenization: Breaking down the reviews into individual words or tokens to prepare them for further analysis
+* Lemmatization or Stemming: Reducing words to their base or root form to handle variations of the same word. For example, converting "running," "runs," and "ran" to the base form "run."
+
+## Feature Engineering
+### Positive & Negative Words
+Created a list of positive and negative words\
+[positive_words](https://gist.github.com/mkulakowski2/4289437)\
+[negative_words](https://gist.github.com/mkulakowski2/4289441)
+
+### Scoring Functions
+* **Polarity**\
+  (positive_score - negative_score) / (positive_score + negative_score)\
+  [-1, 1]
+
+* **Subjectivity**\
+  (positive_score + negative_score) / (len(words))\
+  [0, 1]
+
+* **Average Word Length**\
+  characters_count / words_count
+
+* **Average Word per Sentence**\
+  words_count / sentences_count
+
+* **Fog Index**\
+  0.4 * (average_sentence_length + complex_word_percent)
+
+* **Personal Pronouns**
+* **Syllable Count**
+* **Complex Word Count**
+* **Complex Word Percent**
+
+### Sentiment Analysis
+Performed sentiment using a pre=trained model named "distilbert-base-uncased-finetuned-sst-2-english"
+
+### Hashtag Generation
+Used Word2Vec embeddings for game related words like (gameplay, controls, sound, graphics)\
+Calculates the similarity between each word and suggests the words most related to one of the game related words
+
+## Processed EDA
+word cloud 1\
+![word_cloud_1](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/word_cloud_1.jpg)
+
+word cloud 2\
+![word_cloud_2](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/word_cloud_2.jpg)
+
+polarity score per game\
+![polarity_score](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/polarity_score.jpg)
+
+positive-wise subjectivity score\
+![subjectivity_score](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/subjectivity_score.jpg)
+
+## Vectorization
+First I created a TfidfVectorizer object. A Tfidf Vectorizer is a statistical model that transforms a collection of text documents into a matrix of TF-IDF values
+
+Then I create word embeddings for every word using Word2Vec and feed them into the Tfidf Vectorizer object to generate a matrix of arrays
+
+## Model Evaluation
+I prepared the dataset by dividing it into training and testing datasets
+
+I then imported necessary libraries and models for model selection and evaluation
+
+I initialized the classifiers and created a list called models containing them
+
+I performed a grid search for each model to find the best hyperparameters
+
+I then fitted the grid search on the training data and made predictions on the testing data
+
+Classification reports, confusion matrices, and other evaluation metrics were printed for both tags and sentiment tasks
+
+![decision_tree](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/decision_tree.jpg)
+
+![linear_discriminant](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/linear_discriminant.jpg)
+
+![naive_bayes](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/naive_bayes.jpg)
+
+![random_forest](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/random_forest.jpg)
+
+![support_vector](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/support_vector.jpg)
+
+## Final Output
+![tags](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/tags_pred.jpg)
+
+![sentiment](https://github.com/subhashishansda4/Game-Reviews/blob/main/console/sentiment_pred.jpg)
+
+## Final EDA
+![tags_count](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/tags_count.jpg)
+
+![pred_tags_count](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/pred_tags_count.jpg)
+
+![sent_count](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/sent_count.jpg)
+
+![pred_sent_count](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/pred_sent_count.jpg)
