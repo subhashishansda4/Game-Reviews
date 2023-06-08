@@ -1,4 +1,4 @@
-## Text Classification and Sentiment Analysis of Consumer Reviews in Steam
+## Text Classification & Sentiment Analysis of Consumer Reviews
 Trained a machine learning model to generate text tags and give sentiment scores for game reviews to help game companies and new gamers with useful information and insights to assist companies in strategizing and help users in buying decision
 
 ## Problem Statement
@@ -38,3 +38,24 @@ Here are some of the features of the Steam UI:
 * A community: The Steam UI has a built-in community where users can connect with other gamers, chat with friends, and join groups
 * A workshop: The Steam UI has a workshop where users can find and download mods, maps, and other user-created content for their games
 * A news section: The Steam UI has a news section where users can find news and updates about Steam and its games
+
+### Steam Game ID
+The Steam game ID is a unique identifier for a game on Steam. It is used to identify the game in Steam APIs, such as the User Reviews API. To get user reviews for a game, you need to know the game's Steam ID
+
+You can find the Steam ID for a game by looking at the URL of its store page. The Steam ID will be at the end of the URL, after the "appid=" part
+
+`httos://store.steampowered.com/appreviews/<appid>?json=1`
+
+![steam_game_id](https://github.com/subhashishansda4/Game-Reviews/blob/main/misc/steam%20game%20id.jpg)
+
+### Steam API
+The Steam API is a set of functions that allow developers to access data from Steam, such as game information, user profiles, and chat logs
+
+The API is divided into two parts: the Web API and the Steamworks API. The Web API is designed for developers who want to create web applications that interact with Steam\
+The Steamworks API is designed for developers who want to create games that interact with Steam
+
+![steam_api](https://github.com/subhashishansda4/Game-Reviews/blob/main/misc/steam%20api.jpg)
+
+![steam_api_elements](https://github.com/subhashishansda4/Game-Reviews/blob/main/misc/steam%20api%20elements.jpg)
+
+## Workflow
