@@ -1,4 +1,4 @@
-## Text Classification and Sentiment Analysis of Consumer Reviews in Steam for "Destiny 2"
+## Text Classification and Sentiment Analysis of Consumer Reviews in Steam
 Trained a machine learning model to generate text tags and give sentiment scores for game reviews to help game companies and new gamers with useful information and insights to assist companies in strategizing and help users in buying decision
 
 ## Problem Statement
