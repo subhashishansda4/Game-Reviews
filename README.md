@@ -179,3 +179,42 @@ Classification reports, confusion matrices, and other evaluation metrics were pr
 ![sent_count](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/sent_count.jpg)
 
 ![pred_sent_count](https://github.com/subhashishansda4/Game-Reviews/blob/main/graphs/pred_sent_count.jpg)
+
+## Conclusion
+### Significance & Limitations
+1. Customer Insights\
+  Analyzing consumer reviews can provide valuable insights into the opinions, preferences, and experiences of Destiny 2 players\
+  By classifying the reviews and extracting sentiment, the project can help identify common themes, positive and negative aspects of the game, and specific areas of improvement
+
+2. Product Improvement\
+   By categorizing consumer reviews into different topics (tags) and analyzing sentiment, the project can help identify specific areas of the game that players appreciate or find problematic
+
+3. Marketing and Reputation Management
+   Analyzing consumer sentiment can provide insights into the overall reputation of Destiny 2 among players\
+   Positive sentiment can be leveraged for marketing purposes, highlighting the game's strengths and positive aspects in promotional materials and advertisements
+
+4. User Feedback Analysis
+   Steam reviews provide a platform for players to express their opinions and provide feedback on the game. Analyzing and categorizing this feedback can help identify recurring issues, bugs, or glitches that players encounter, allowing developers to respond and address these concerns effectively
+
+5. Community Engagement
+   Understanding the sentiments and preferences of players can facilitate better engagement with the gaming community. By analyzing and categorizing player feedback, developers can identify enthusiastic supporters, influencers, and community advocates
+
+
+6. Competitive Analysis
+   Analyzing the sentiment and reviews of Destiny 2 in comparison to other similar games can provide insights into the game's competitive position
+
+
+### Limitations & Future Work
+The project code performs text processing, feature engineering, and analysis on the Destiny 2 consumer reviews from Steam. However, there are several limitations and areas for improvement in the code:
+
+1. Hard-coded file paths: The code includes hard-coded file paths for input and output files, such as 'output/raw_df.csv' and 'graphs/positive.jpg'. It would be better to make these paths configurable or parameterize them to improve flexibility and ease of use
+
+2. Lack of data preprocessing techniques: The code performs basic text processing steps, such as lowercase conversion, special character handling, and stop word removal. However, it could benefit from additional preprocessing techniques like spell checking, handling contractions, and removing HTML tags (if present)
+
+3. Lack of error handling: The code does not include sufficient error handling mechanisms. It would be helpful to include appropriate error handling, such as exception handling, to handle potential errors during file operations, model loading, or other critical parts of the code
+
+4. Limited use of machine learning models: The code primarily focuses on descriptive analysis and feature engineering, but it does not incorporate machine learning models for text classification or sentiment analysis. Integrating machine learning models like Naive Bayes, SVM, or deep learning models could enhance the accuracy and predictive power of the analysis
+
+5. Limited evaluation and validation: The code does not include an evaluation or validation process for the generated features or sentiment analysis. It would be beneficial to incorporate techniques such as cross-validation or holdout validation to assess the model's performance and generalize its findings
+
+6. Scalability and efficiency: Depending on the size of the dataset, some operations in the code, such as tokenization and feature generation, may become slow or memory-intensive. It would be necessary to consider efficient algorithms or libraries (e.g., spaCy) to handle larger datasets more effectively
